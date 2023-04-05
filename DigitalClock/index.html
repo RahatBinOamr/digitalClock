@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="clock"></div>
+    <script>
+      function updateClock() {
+        // Get the current time
+        let currentTime = new Date();
+        //  hours, minutes, and seconds from the date object
+        let hours = currentTime.getHours();
+        let minutes = currentTime.getMinutes();
+        let seconds = currentTime.getSeconds();
+        // Convert the hours component to 12-hour format
+        let amPm = hours < 12 ? "AM" : "PM";
+        hours = hours % 12 || 12;
+        hours = (hours < 10 ? "0" : "") + hours;
+        minutes = (minutes < 10 ? "0" : "") + minutes;
+        seconds = (seconds < 10 ? "0" : "") + seconds;
+        let timeString = hours + ":" + minutes + ":" + seconds + " " + amPm;
+        document.getElementById("clock").textContent = timeString;
+      }
+
+      updateClock();
+
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
